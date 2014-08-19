@@ -1,5 +1,34 @@
 \subsection{Scopes}
 
+
 \begin{frame}
-scoobidoobidoo!
+\inputminted[linenos, numbersep=5pt, tabsize=4, frame=lines, label=Othello.java]{java}{scopes/first.rb}
+\end{frame}
+
+
+\begin{frame}
+Mein Thema ist die Einführung einer neuen Funktion. mit der "überspringen" Funktion soll man nicht nur Schrittweise durch den Text gehen können, sondern ganze Codeblöcke überspringen können. Zusätzlich soll die Möglichkeit bestehen, breakpoints zu setzten, bei denen eine normale Simulation anhält. 
+\end{frame}
+
+\begin{frame}
+Idee: Wir suchen nach Schlagwörtern im Text. Wird ein Blockanfang gefunden, gehen wir eine Ebene tiefer in den Laufzeitkeller (Stack). Wird das Ende eines Blockes erkannt, geht man wieder eine Ebene hinauf. Wenn man in der GUI die Funktion "Überspringen" auswählt, wird die Anfangstiefe gespeichert und es wird automatisch durch die Simulation gegangen, bis man an einem Punkt angelangt ist, wo die aktuelle Tiefe kleiner als die Anfangstiefe ist. Bei einer Anfangstiefe von 0 wird nur ein normaler Schritt durchgeführt.
+\end{frame}
+
+\begin{frame}
+Schritt 1: Einfügen einer Funktion
+Schritt 2: Automatische Blockerkennung und Einfügen der Funktion in den übergebenen Code
+\end{frame}
+
+\begin{frame}
+Schritt 1: 
+Um eine neue Funktion in Code benutzen zu können, müssen wir diese in dem Funktionsblock des Preprozessors einfügen.
+Meine Lösung: die Funktion break\_ point(:arg) mit den Argumenten :
+:point -> Breakpoint
+:down -> erhöhung des Scopes
+:up -> verringerung des Scopes
+\end{frame}
+
+\begin{frame}
+Probleme:
+da der Benutzer selbst die Kellertiefe ändern kann, muss der Sprung spätestens am Ende des Codes beendet werden.
 \end{frame}
