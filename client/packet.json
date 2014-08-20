@@ -1,0 +1,14 @@
+{
+  "id": 1337,
+  "allocations": {
+    "x1": 3
+  },
+  "operations": [{
+       "name": "look",
+       "return": "monster" 
+     }],
+  "messages": [{
+    "type": "warning",
+    "message": "Das Schiff ist am Rande der Welt" 
+  }]
+}
