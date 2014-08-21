@@ -93,3 +93,4 @@ main.pdf
 
 .idea/*
 .idea
+*.~lock.*
