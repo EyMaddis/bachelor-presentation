@@ -4,7 +4,7 @@ def hello_world
 	(1..3).each do
 		move
 		look(:back)
-	end #end of the loop
+	end
 end
 move
 hello_world
