@@ -1,7 +1,7 @@
 {
   "id": 1337,
   "allocations": {
-    "x1": 3
+    "greeting": "Yohoho"
   },
   "operations": [{
        "name": "look",
