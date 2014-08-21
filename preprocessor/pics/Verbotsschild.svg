@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="705"
+   height="705">
+
+ <g>
+  <title>Kreis (schwarzer Rand)</title>
+  <circle id="circle1"
+     cx="352.5"
+     cy="352.5"
+     r="350"
+     style="fill:white;stroke:black;stroke-width:2.5px"/>
+ </g>
+ <g>
+  <title>Kreis (roter Kreis)</title>
+  <circle id="circle2"
+     cx="352.5"
+     cy="352.5"
+     r="290"
+     style="fill:none;stroke:#c00;stroke-width:90"/>
+ </g>
+ <g transform="rotate(40 352.5 352.5) ">
+  <title>Rechteck (roter Balken)</title>
+  <rect
+  	x="62.5"
+  	y="307.5"
+  	width="580"
+  	height="90"
+  	fill="#c00" stroke="none" stroke-width="0"/>
+ </g>
+</svg>
