@@ -8,7 +8,7 @@
        "return": "monster" 
      }],
   "messages": [{
-    "type": "warning",
-    "message": "Das Schiff ist am Rande der Welt" 
+    "type": "log",
+    "message": "A pirate greeted with: Yohoho" 
   }]
 }
