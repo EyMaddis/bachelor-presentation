@@ -1,7 +1,4 @@
-\subsection{Scopes}
-
-
-
+\subsection{Komfortables Debuggen}
 
 \begin{frame}
 	\begin{itemize}
@@ -9,10 +6,12 @@
 		\item[]	Einfügen der Jumpfunktion\\
 		setzen von Breakpoints\\ 	
 	\end{itemize}
+	%Eben haben wir gesehn, wie man eine neue Sprache einführt. 
 	%Mein Thema ist die Einführung einer neuen Funktion.
 \end{frame}
 
 \begin{frame}
+	\frametitle{Ziel}
 	\begin{center}
 		\includegraphics[scale=0.4]{scopes/Jump1.pdf}
 	\end{center}
@@ -20,17 +19,12 @@
 \end{frame}	
 
 \begin{frame}
-
-	\begin{center}
-		\includegraphics[scale=0.4]{scopes/beispiel2.pdf}
-	\end{center}
-	%Idee: Wir suchen nach Schlagwörtern im Text. 
-\end{frame}
-
-\begin{frame}
+	\frametitle{Idee}
 	\begin{center}
 		\includegraphics[scale=0.4]{scopes/beispiel3.pdf}
 	\end{center}
+	%Idee: Wir suchen nach Schlagwörtern im Text. 
+	%dann Simulieren wir mit einem Counter einen Stack.
 	%Wird ein Blockanfang gefunden, gehen wir eine Ebene tiefer in den Laufzeitkeller (Stack). Wird das Ende eines Blockes erkannt, geht man wieder eine Ebene hinauf. Wenn man in der GUI die Funktion "Überspringen" auswählt, wird die Anfangstiefe gespeichert und es wird automatisch durch die Simulation gegangen, bis man an einem Punkt angelangt ist, wo die aktuelle Tiefe kleiner als die Anfangstiefe ist. Bei einer Anfangstiefe von 0 wird nur ein normaler Schritt durchgeführt.
 \end{frame}
 
@@ -40,18 +34,11 @@
 		\item[]\textbf{Schritt 1: Einfügen der $ break\_point $ Funktion} \\
 		\item[]\textbf{Schritt 2: Automatische Blockerkennung und Einfügen der Funktion in den übergebenen Code} \\
 	\end{itemize}
-	%Was brauchen wir für den ersten Schritt:
 \end{frame}
 
-\begin{frame}
-	\ \\
-	\begin{center}
-		\includegraphics[scale=0.5]{scopes/button.pdf}
-	\end{center}
-	%Zuerst brauchen wir einen Button.
-\end{frame}
 
 \begin{frame}
+	\frametitle{Implementation}
 	\begin{itemize}
 		\item[]\textbf{Eine Funktion: $break\_point()$} \\
 		\item[]\textbf{:point $\rightarrow$ Breakpoint} \\
@@ -65,25 +52,21 @@
 \end{frame}
 
 \begin{frame}
-	\ \\
-	\begin{center}
-		\includegraphics[scale=0.6]{scopes/preprocessor.pdf}
-	\end{center}
-	%Damit man eine Funktion im Code benutzen kann, müssen wir sie im Preprozessor vordefinieren. Wenn die VM den Code ausführt, soll sie die breakfunktion mit dem ausgesuchten parapeter aufrufen. 
-\end{frame}
-
-\begin{frame}
-	\inputminted[linenos, frame=lines, label=rubyfunction]{ruby}{scopes/first.rb}
-	%Die Breakfunktion packt einfach das Argument in das aktuelle Paket. Hierzu habe ich einen neuen Paket-Schlüssel definiert: :break (break ist vorgefiniert, deswegen heißt die Funktion break!) 
-\end{frame}
-
-\begin{frame}
+	\frametitle{Implementation}
 	\begin{center}
 		\includegraphics[scale=0.5]{scopes/stacks.pdf}
 	\end{center}
 	%Die VM und der Server geben also nur die Argumente an den Client weiter, wo ich eine Variable Stackdeep angelegt hab. Kommt ein Packet mit einem :break Element an, wird nur die Variable hoch oder runter gezählt.
 	%Wenn man "überspringen" auswählt, wird die Stack deep gespeichert und die Pakete solange simuliert, bis die Stackdeep kleiner als der gespeicherte Wert ist. 
 	%Wenn in einem Paket ein Breakpoint gesetzt werden soll, rufen wir einfach dir Funktion Simulation.stop() auf, die auch ausgeführt wird, wenn man auf den Stop Button drück.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Implementation}
+	\begin{center}
+		\includegraphics[scale=0.5]{scopes/button.pdf}
+	\end{center}
+	%Außerdem brauchen wir noch einen Button. Wenn überspringen ausgewäht wird, wird sich die Stackdeep gemerkt und solange schrittweise durch den Code gegangen, bis die aktuelle Tiefe kleiner ist als die anfangstiefe oder bis zum Ende des Codes. Bei einer Steckdeep von 0 wird nur ein Schritt durchgeführt.
 \end{frame}
 
 \begin{frame}
@@ -95,39 +78,26 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Automatische Blockerkennung}
 	\begin{center}
 		\includegraphics[scale=0.4]{scopes/beispiel2.pdf}
 	\end{center}
-	%Ich will die Blöcke erkennen, die mit 'end' beendet werden, also hab ich in einer Liste von Schlagwörtern für Ruby alle relevanten rausgeschrieben.
+	%Ich will die Blöcke erkennen, die mit 'end' beendet werden, also hab ich in einer Liste von Schlagwörtern für Ruby alle relevanten rausgeschrieben. Und dann hab ich überlegt, wo ich die breakfunktion einfügen möchte.
 \end{frame}
 
 \begin{frame}
-	\begin{itemize}
-		\item[]\textbf{class\\ def\\ module\\ if (unless)\\ while\\ for\\ until\\ do\\ case\\ begin\\ BEGIN\\ END\\}
-	\end{itemize}
-	%Die Liste ist dann doch etwas länger geworden.
+	\frametitle{Wo einfügen}
+	\inputminted[linenos, frame=lines, label=Beispiel 1]{ruby}{scopes/beispiel1.rb}
+%Erster gedanke: davor. Probleme bei While.
+% Dahinter geht auch nicht so wirklich, def
+% Also habe ich zwei Listen gemacht, eine mit 
 \end{frame}
 
 \begin{frame}
-	\begin{center}
-	\ \\
-		\includegraphics[scale=0.4]{scopes/beispiel4.pdf}
-	\end{center}
-	%Es stellt sich also die Frage, wo ich die Funktion in den Code einfügen möchte. Zuerst dachte ich, direkt nach dem Schlüsselwort, bei einer Schleife würden wir dann jedoch immer wieder die Funktion aufrufen.
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-		\ \\ \ \\
-		\includegraphics[scale=0.4]{scopes/beispiel5.pdf}
-	\end{center}
-	%Also dachte ich, direkt in der Zeile vor dem Schlüsselwort. Definiert man aber eine Funktion und ruft diese später auf, wird die Zeile vor der Funktion natürlich nicht ausgeführt. Also musste ich meine List unterteilen.
-\end{frame}
-
-\begin{frame}
+	\frametitle{Zwei Listen}
 	\begin{center}
 		\begin{tabular}{c|c}
-			\textbf{Vor} & \textbf{Hinter} \\ 
+			\textbf{davor} & \textbf{dahinter} \\ 
 			\hline 
 			\textbf{for} & \textbf{def} \\ 
 			\textbf{until} & \textbf{class} \\
@@ -136,24 +106,28 @@
 			\textbf{do} & \textbf{END} \\
 			\textbf{case} &  \\
 		\end{tabular}
+		\\end ,return
 	\end{center}
+	
 	%bei den Operatoren, bei denne ich die break_down Funktion vor dem Öffnen des Blocks setzt, setzt ich die break_up Funktion hinter das dazugehörige end. Für die unterscheidung der ends benutzte ich eine Liste, zu der ich bei jedem öffnen eines Blockes ein passendes Element hinzufüge und beim schließen das zuletzt hinzugefügte Element untersuche und lösche.
 	%da durch return eine Funktion vorzeitig beendet werden kann, muss man auch vor einem return die break Funktion aufrufen.
 	%Ein weiteres Problem ist, dass z.B. bei der While Schleife zusätzlich zu dem while ein do gesetzt werden kann. Zur Zeit prüfe ich den Code zuerst auf die Schlüsselwörter, auf die optimal auch ein do folgen kann und erst wenn keines dieser Wörter gefunden wurde prüfe ich auf do.
 \end{frame}
 
 \begin{frame}
-	\inputminted[linenos, frame=lines, label=Beispiel]{ruby}{scopes/beispiel.rb}
+	\frametitle{Kommentar}
+	\inputminted[linenos, frame=lines, label=Beispiel 2]{ruby}{scopes/beispiel2.rb}
 	%Weitere Fälle müssen untersucht werden: Kommentare und String. Schlüsselwörter, die in solchen Bereichen stehen, müssen ignoriert werden. Und man muss aufpassen, dass man die breakfunktion nicht ausversehen in einen Kommentar oder string einfügt.
 	%Zur Zeit suche ich mit der index Funktion nach Kommentaren. Sie liefert die Stelle, an dem ein Zeichen das erste mal vorkommt. Genau davor würde ich dann die Funktion kopieren.
 \end{frame}
 
 \begin{frame}
+	\frametitle{Einschränkungen/ Aussicht}
 	\begin{itemize}
 		\item[]\textbf{Momentane Einschränkungen:}
 		\item[]Nur eine break- Funktion pro Zeile
 		\item[]Keine Schlagwörter in Strings
-		\item[]Keine break- Funktionen in Zeilen mit multiline Strings
+		\item[]Keine break- Funktionen in Zeilen mit mehrzeiligen Strings
 		\item[]\textbf{...}
 	\end{itemize}
 	%Bis jetzt muss man sich an die folgenden Bedingungen halten, damit die Jump Funktion korrekt genutzt werden kann... Da ich noch nicht fertig bin, werden mir bestimmt in den nächsten Wochen weitere Probleme auffallen. In der nächsten Zeit werde ich versuchen, diese Probleme möglichst zu beheben. Idee zu Strings: Codezeile kürzen und gekürzte Zeile überprüfen.
