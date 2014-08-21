@@ -1,4 +1,4 @@
-  def break!(packet,direction)
+  def break!(packet,argument)
       packet[:break] ||= []
-      packet[:break] << {:type => direction}
+      packet[:break] << {:type => argument}
   end

@@ -5,5 +5,69 @@ Simuliere Krankheit .... DONE
 \end{frame}
 
 \begin{frame}
-Die von der VM gesendeten Daten werden von dem Server interpretiert. Jenachdem was bei ihm ankommt, werden verschiedene Funktionen ausgeführt. Es gibt eine Liste von Funktionen, die der Benutzer benutzen kann. Desweiteren werden noch Funktionen benötigt, um zb. das Highlighting zu realisieren.
+
+	\inputminted[linenos, frame=lines, label= functions]{java}		{simulation/first.rb}
+%Wir haben hier eine Liste von Funktionen. Wenn die VM etwas an den Server sendet, wird in der Liste überprüft, was man damit machen soll. Mit Unterstrich kann man der Funktion noch Atribute mitgeben. Es gibt einmal die Funktionen für die Simulation und dann noch Funktionen für weitere Informationen. 
+
+	\ \\
+	$turn\_ right \rightarrow @ship.turn!(:right)$
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[scale=0.5]{simulation/Pakete.jpg}
+	\end{center}
+	%Für jede Zeile des ursprünglichen Codes wird ein Paket gepackt, in die jede aufgerufene Funktion Informationen für den Server packen können. Ist man am Ende einer Zeile angelangt, wird das Paket losgeschickt. 
+\end{frame}
+
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[scale=0.5]{simulation/Pakete2.jpg}
+	\end{center}
+	%Die Einzelnen Funktionen packen Pakete, die dann an die GUI gesendet werden. 
+	%(Look gibt auch auch einen Wert an die VM zurück.)
+	%Wir haben versucht, die Simulation möglichst Serverlastig zu gestalten. So Liegt auf dem Server das Grid mit allen Objekten. Da die GUI beim Starten der Simulation das Grid mit dem Objekten an den Server sendet, stimmen am Anfang Grid auf Server und Client überein. Es werden nur Änderungen und wichtige Informationen übermittelt. Bei put z.B nur das hinzugefügte Objekt mir Koordinaten, bei look nur das zu highlightende Feld.
+\end{frame}
+
+\begin{frame}
+	Simulation
+	\begin{center}
+		\includegraphics[scale=0.5]{simulation/Simulation1.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	Simulation
+	\begin{center}
+		\includegraphics[scale=0.5]{simulation/Simulation2.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	Simulation
+	\begin{center}
+		\includegraphics[scale=0.5]{simulation/Simulation3.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	Simulation
+	\begin{center}
+		\includegraphics[scale=0.5]{simulation/Simulation4.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[scale=0.5]{simulation/Simulation5.pdf}
+	\end{center}
+	%Wir speichern alle Objecte in einem zweidimensionalen Hash, will man auf eine nicht definierte Koordinate zugreifen, bekommt man als Object :nothing zurück. Das Schiff wird seperat als eigenständige Klasse gespeichert und hier befinden sich auch die sich auf das Schiff beziehenden Funktionen. Zusätzlich zu den Koordinaten besitzt das Schiff auch eine Rotation. Jede Funktion 
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Grid auf Server und Client sind identisch
+		\item Nur Änderungen des Grids werden dem Client gesendet
+	\end{itemize}
 \end{frame}
