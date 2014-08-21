@@ -1,6 +1,12 @@
 \subsection{Präprozesssor für Ruby}
 
 \begin{frame}
+\begin{center}
+	\includegraphics[scale=0.35]{overview}
+\end{center}
+\end{frame}
+
+\begin{frame}
 \frametitle{Idee}
 %Ruby, rub, rub! :3
 \begin{center}
@@ -25,10 +31,25 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Verarbeitung von Case Blöcken}
-\begin{center}
-\includegraphics[scale=0.8]{preprocessor/pics/CaseBlockVerarbeitung}
-\end{center}
+\frametitle{Verarbeitung mehrzeiliger Strings}
+  \includegraphics[scale=1]{preprocessor/pics/MultilineVerarbeitung}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Verarbeitung von Case Blöcken}
+%\begin{center}
+%\includegraphics[scale=0.8]{preprocessor/pics/CaseBlockVerarbeitung}
+%\end{center}
+%\end{frame}
+
+\begin{frame}
+%\frametitle{Code: vorher und nachher}
+  \begin{columns}
+    \column[t]{0.50\textwidth}
+\inputminted[linenos, frame=lines, tabsize=2, fontsize=\footnotesize , label=case when]{ruby}{preprocessor/CaseA.rb}
+    \column[t]{.50\textwidth}
+    \inputminted[linenos, frame=lines, tabsize=2, fontsize=\footnotesize , label=case]{ruby}{preprocessor/CaseB.rb}
+  \end{columns} 
 \end{frame}
 
 \begin{frame}
