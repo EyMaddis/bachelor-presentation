@@ -5,7 +5,7 @@
   },
   "operations": [{
        "name": "look",
-       "return": [2,5]
+       "return": "monster" 
      }],
   "messages": [{
     "type": "log",
