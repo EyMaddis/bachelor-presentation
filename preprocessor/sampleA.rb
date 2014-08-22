@@ -5,7 +5,7 @@ def gold(here)
   case here
   when :treasure
 
-    return "Yippieh!" 
+    return "Yarrh!" 
 
   else 
 
