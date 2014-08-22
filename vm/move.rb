@@ -1,3 +1,3 @@
 def move
-  puts $prefix + '_move'
+  puts 'move'
 end

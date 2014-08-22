@@ -1,6 +1,7 @@
 case jewel 
+
   when 'ruby'
-    puts 'Yarr, meh matey'
+    puts 'Yarr, me matey'
   when 'diamond'
     puts 'Me prescious!'
   else

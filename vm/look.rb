@@ -1,4 +1,4 @@
 def look
-  puts $prefix + '_?_look'
+  puts '?_look'
   return gets
 end

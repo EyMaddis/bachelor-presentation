@@ -1,4 +1,4 @@
-case jewel when 'ruby'
+case jewel when 'ruby' then
     puts 'Yarr, me matey'
   when 'diamond'
     puts 'Me prescious!'
